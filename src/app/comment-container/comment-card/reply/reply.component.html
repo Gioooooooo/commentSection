@@ -1,0 +1,34 @@
+<div class="replyContainer">
+    <div class="comment">
+        <div class="score">
+            <button class="raitingBtn">+</button>
+            <span>{{currentReply.score}}</span>
+            <button class="raitingBtn">-</button>
+        </div>
+        <div class="commentContent">
+            <div class="contentHeader">
+                <div class="contentUser">
+                    <img src="./assets/{{currentReply.user.image.png}}" alt="suer">
+                    <p>{{currentReply.user.username}}</p>
+                    <span>{{currentReply.createdAt}}</span>
+                    <span class="you" *ngIf="currentReply.user.username == currentUser"> you</span>
+                </div>
+                <div class="reply" *ngIf="currentReply.user.username !== currentUser; else currentUserTrue">
+
+                    <button class="btnReply">Reply</button>
+
+                </div>
+                <ng-template #currentUserTrue>
+                    <div class="div">
+                        <button class="btnReply" (click)="deleteReply(currentReply.id)">Delete</button>
+                    </div>
+
+                </ng-template>
+            </div>
+            <div class="contentMain">
+                <p>{{currentReply.content}}</p>
+            </div>
+        </div>
+    </div>
+
+</div>

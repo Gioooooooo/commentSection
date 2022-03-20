@@ -1,0 +1,23 @@
+#commentBoxContainer {
+  min-width: 800px;
+  background-color: #fff;
+  padding: 1rem 2rem 2rem;
+  border-radius: 0.8rem;
+  margin-top: 30px;
+}
+.commentBoxContainer {
+  display: grid;
+  grid-gap: 1rem;
+  gap: 1rem;
+  margin-top: 2rem;
+  grid-template-columns: min-content 1fr min-content;
+}
+
+.textArea {
+  padding: 2rem 1rem 6rem;
+  border-radius: 0.8rem;
+  border: 0.1rem solid rgba(0, 0, 0, 0.295);
+  resize: none;
+  font-size: 40px;
+  font-family: "Rubik", sans-serif;
+}

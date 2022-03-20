@@ -1,0 +1,39 @@
+<div class="cardContainer">
+    <div class="comment">
+        <div class="score">
+            <button class="raitingBtn">+</button>
+            <span>{{currentComment.score}}</span>
+            <button class="raitingBtn">-</button>
+        </div>
+        <div class="commentContent">
+            <div class="contentHeader">
+                <div class="contentUser">
+                    <img src="./assets/{{currentComment.user.image.png}}" alt="{{currentComment.user.username}}">
+                    <p>{{currentComment.user?.username}}</p>
+                    <span>{{currentComment.createdAt}}</span>
+                    <span class="you" *ngIf="currentComment.user?.username == currentUser"> you</span>
+                </div>
+                <div class="reply" *ngIf="currentComment.user.username !== currentUser; else currentUserTrue">
+                    <button class="btnReply" (click)="replyBtn(currentComment.id)">Reply</button>
+
+                </div>
+                <ng-template #currentUserTrue>
+                    <div class="div">
+                        <button class="btnReply" (click)="deleteComment(currentComment.id)">Delete</button>
+                    </div>
+
+                </ng-template>
+            </div>
+            <div class="contentMain">
+                <p>{{currentComment.content}}</p>
+            </div>
+        </div>
+
+    </div>
+    <ng-container *ngIf="currentComment.replies.length">
+
+        <ng-container *ngFor="let reply of currentComment.replies">
+            <app-reply [currentReply]="reply"></app-reply>
+        </ng-container>
+    </ng-container>
+</div>

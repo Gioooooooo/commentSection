@@ -7,9 +7,10 @@ import { CommentService } from '../shared/comment.service';
   styleUrls: ['./comment-container.component.scss'],
 })
 export class CommentContainerComponent implements OnInit {
-  constructor(private commentService: CommentService) {}
-  ngOnInit(): void {}
-  smthing = '';
   commentsArray = this.commentService.allComments;
   currentUser = this.commentService.currentUser.username;
+
+  constructor(private commentService: CommentService) {}
+
+  ngOnInit(): void {}
 }

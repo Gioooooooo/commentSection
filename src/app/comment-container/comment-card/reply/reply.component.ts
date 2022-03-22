@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Comment } from '../../../interfaces/interface';
+import { CurrentComment, OmitReplies } from 'src/app/models/commentmodel';
 import { CommentService } from 'src/app/shared/comment.service';
 
 @Component({
@@ -8,10 +8,26 @@ import { CommentService } from 'src/app/shared/comment.service';
   styleUrls: ['./reply.component.scss'],
 })
 export class ReplyComponent implements OnInit {
-  @Input() currentReply!: any;
-  constructor(private commentService: CommentService) {}
+  // @Input() currentReply!: OmitReplies;
+  @Input() currentReply: OmitReplies | undefined;
+
+  // @Input() currentComment!: CurrentComment;
+  @Input() currentComment: CurrentComment | undefined;
+  isReplyActive = false;
 
   currentUser = this.commentService.currentUser.username;
-  deleteReply = this.commentService.deleteComment;
+
+  constructor(private commentService: CommentService) {}
+
   ngOnInit(): void {}
+
+  deleteReply(id: number | undefined) {
+    if (id) {
+      this.commentService.deleteComment(id);
+    }
+  }
+
+  replyBtn() {
+    this.isReplyActive = !this.isReplyActive;
+  }
 }

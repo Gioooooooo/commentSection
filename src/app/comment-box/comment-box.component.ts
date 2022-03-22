@@ -7,11 +7,15 @@ import { CommentService } from '../shared/comment.service';
   styleUrls: ['./comment-box.component.scss'],
 })
 export class CommentBoxComponent implements OnInit {
-  constructor(private commentService: CommentService) {}
-
-  ngOnInit(): void {}
   textAreaInput = '';
   currentUser = this.commentService.currentUser;
   commentsArray = this.commentService.allComments;
-  addComment = this.commentService.addComment;
+
+  constructor(private commentService: CommentService) {}
+
+  ngOnInit(): void {}
+
+  addComment(textAreaInput: string) {
+    this.commentService.addComment(textAreaInput);
+  }
 }

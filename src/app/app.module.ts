@@ -7,11 +7,19 @@ import { CommentContainerComponent } from './comment-container/comment-container
 import { CommentCardComponent } from './comment-container/comment-card/comment-card.component';
 import { CommentBoxComponent } from './comment-box/comment-box.component';
 import { ReplyComponent } from './comment-container/comment-card/reply/reply.component';
-
+import { ReplyBoxComponent } from './reply-box/reply-box.component';
+import { LocalstorageService } from './shared/localstorage.service';
 @NgModule({
-  declarations: [AppComponent, CommentContainerComponent, CommentCardComponent, CommentBoxComponent, ReplyComponent],
+  declarations: [
+    AppComponent,
+    CommentContainerComponent,
+    CommentCardComponent,
+    CommentBoxComponent,
+    ReplyComponent,
+    ReplyBoxComponent,
+  ],
   imports: [BrowserModule, AppRoutingModule, FormsModule],
-  providers: [],
+  providers: [LocalstorageService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

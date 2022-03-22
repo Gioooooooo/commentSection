@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { CurrentComment } from 'src/app/models/commentmodel';
 import { CommentService } from 'src/app/shared/comment.service';
-import { Comment } from '../../interfaces/interface';
 
 @Component({
   selector: 'app-comment-card',
@@ -8,12 +8,23 @@ import { Comment } from '../../interfaces/interface';
   styleUrls: ['./comment-card.component.scss'],
 })
 export class CommentCardComponent implements OnInit {
-  constructor(private commentService: CommentService) {}
-  @Input() currentComment!: Comment;
-  ngOnInit(): void {}
+  @Input() currentComment: CurrentComment | undefined;
+  // @Input() currentComment!: CurrentComment;
+
+  isReplyActive = false;
   score = '';
   commentsArray = this.commentService.allComments;
   currentUser = this.commentService.currentUser.username;
-  deleteComment = this.commentService.deleteComment;
-  replyBtn = this.commentService.replyBtn;
+
+  constructor(private commentService: CommentService) {}
+
+  ngOnInit(): void {}
+
+  deleteComment(id: number) {
+    this.commentService.deleteComment(id);
+  }
+
+  replyBtn() {
+    this.isReplyActive = !this.isReplyActive;
+  }
 }

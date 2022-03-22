@@ -1,0 +1,9 @@
+<ng-container *ngIf="isReplyActive">
+    <div id="commentBoxContainer">
+        <div class="commentBoxContainer">
+            <img src="./assets/{{currentUser.image.png}}" alt="">
+            <textarea name="" id="" class="textarea" [(ngModel)]="textAreaInput"></textarea>
+            <button class="postBtn" (click)="addReply(textAreaInput,currentComment.id)">Reply</button>
+        </div>
+    </div>
+</ng-container>
